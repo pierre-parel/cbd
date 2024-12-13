@@ -8,6 +8,7 @@ import tensorflow as tf
 
 IMG_SIZE = (224, 224)
 BATCH_SIZE = 32
+EPOCHS = 50
 ds_train, ds_test = keras.utils.image_dataset_from_directory(
     "coffee_bean",
     validation_split=0.2,
@@ -24,15 +25,19 @@ model = keras.applications.Xception(
     classes=17
 )
 
-model.summary()
-
 model.compile(
     optimizer='rmsprop',
-    loss='categorical_crossentropy'
+    loss='categorical_crossentropy',
+    metrics=['accuracy']
 )
+
+callbacks = [
+    keras.callbacks.ModelCheckpoint(filepath="model_at_epoch_{epoch}.keras"),
+]
 
 model.fit(
     ds_train,
-    epochs=20,
-    validation_data=ds_test
+    epochs=EPOCHS,
+    validation_data=ds_test,
+    callbacks=callbacks,
 )
