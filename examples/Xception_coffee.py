@@ -1,10 +1,7 @@
-import numpy as np
 import os
-import matplotlib.pyplot as plt
 os.environ["KERAS_BACKEND"] = "tensorflow"
 
 import keras
-import tensorflow as tf
 
 IMG_SIZE = (224, 224)
 BATCH_SIZE = 32
