@@ -35,8 +35,8 @@ TODO
 - [X] Use GPU for faster training. See [Install TensorFlow with pip](https://www.tensorflow.org/install/pip#windows-wsl2_1) and [Use a GPU](https://www.tensorflow.org/guide/gpu)
 - [X] Change from Xception to EfficientNetV2B0. 
 - [X] Use different pretrained model for comparison
-- [ ] Prefetch dataset (IN PROGRESS)
-- [ ] Data augmentation 
+- [ ] Data augmentation (IN PROGRESS)
+- [ ] Prefetch dataset 
 
 
 References
