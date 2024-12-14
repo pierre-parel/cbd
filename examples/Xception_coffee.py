@@ -29,7 +29,7 @@ model.compile(
 )
 
 callbacks = [
-    keras.callbacks.ModelCheckpoint(filepath="model_at_epoch_{epoch}.keras"),
+    keras.callbacks.ModelCheckpoint(filepath="checkpoints/model_at_epoch_{epoch}.keras"),
 ]
 
 model.fit(
