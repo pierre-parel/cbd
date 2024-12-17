@@ -50,7 +50,11 @@ cbd/
     examples/
     .py files
 ```
-4. Run the python file.
+4. Generate the augmented dataset using the following command:
+```sh
+python generate_augmented_images.py
+```
+5. Train the model using the command:
 ```sh
 python transfer_learning.py
 ```
