@@ -3,18 +3,17 @@ os.environ["KERAS_BACKEND"] = "tensorflow"
 
 import tensorflow as tf
 from tensorflow import keras
-from keras.applications.efficientnet_v2 import EfficientNetV2B0
+from keras.applications.efficientnet_v2 import EfficientNetV2S
 
-model = EfficientNetV2B0(
+model = EfficientNetV2S(
     weights="imagenet",
     include_top=False,
     input_shape=(224, 224, 3),
-    classes=17
 )
 
-model.summary()
-
 # Freeze weights of the EfficientNetV2B0 layers for transfer learning
+# for layer in model.layers[:-5]:
+#     layer.trainable = False
 model.trainable = False
 
 from keras.models import Sequential
@@ -23,11 +22,11 @@ from keras.layers import *
 # Create custom model
 my_model = Sequential([
     model,
-    Conv2D(1024, 3, 1, activation="relu"),
+    Conv2D(128, 3, 1, activation="relu"),
     GlobalAveragePooling2D(),
-    Dense(1024, activation="relu"),
+    Dense(128, activation="relu"),
     Dropout(0.2),
-    Dense(1024, activation="relu"),
+    Dense(128, activation="relu"),
     Dropout(0.2),
     Dense(17, activation="softmax")
 ])
@@ -83,13 +82,30 @@ from keras.losses import CategoricalCrossentropy
 
 my_model.compile(
     loss=CategoricalCrossentropy(),
-    optimizer=Adam(learning_rate=0.001),
+    optimizer=Adam(learning_rate=0.0001),
     metrics=metrics,
 )
 
 from keras.callbacks import EarlyStopping
-my_model.fit(
+history = my_model.fit(
     ds_train,
     epochs=EPOCHS,
     validation_data=ds_test,
 )
+
+plt.plot(history.history['accuracy'])
+plt.plot(history.history['val_accuracy'])
+plt.title('model accuracy')
+plt.ylabel('accuracy')
+plt.xlabel('epoch')
+plt.legend(['train', 'val'], loc='upper left')
+plt.savefig("accuracy.jpg")
+plt.clf()
+
+plt.plot(history.history['loss'])
+plt.plot(history.history['val_loss'])
+plt.title('model loss')
+plt.ylabel('loss')
+plt.xlabel('epoch')
+plt.legend(['train', 'val'], loc='upper left')
+plt.savefig("loss.jpg")
