@@ -2,3 +2,4 @@ env/
 coffee_bean/
 checkpoints/
 *.keras
+*.jpg
