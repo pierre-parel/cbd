@@ -77,6 +77,8 @@ metrics = [
     Precision(),
     Recall(),
 ]
+
+
 from keras.optimizers import Adam
 from keras.losses import CategoricalCrossentropy
 
@@ -86,11 +88,22 @@ my_model.compile(
     metrics=metrics,
 )
 
-from keras.callbacks import EarlyStopping
+from keras.callbacks import ModelCheckpoint
+
+model_checkpoint_callbacks = ModelCheckpoint(
+    filepath="saved_models/{epoch:02d}-{val_accuracy:.2f}.keras",
+    monitor="val_accuracy",
+    mode="max",
+    save_best_only = True
+)
+
 history = my_model.fit(
     ds_train,
     epochs=EPOCHS,
     validation_data=ds_test,
+    callbacks = [
+        model_checkpoint_callbacks
+    ]
 )
 
 plt.plot(history.history['accuracy'])
