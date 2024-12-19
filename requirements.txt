@@ -2,3 +2,4 @@ keras
 tensorflow[and-cuda]
 matplotlib
 numpy
+scikit-learn

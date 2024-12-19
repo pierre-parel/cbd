@@ -38,7 +38,7 @@ IMG_SIZE = (224, 224)
 BATCH_SIZE = 64
 EPOCHS = 100
 ds_train, ds_test = keras.utils.image_dataset_from_directory(
-    "coffee_bean",
+    "coffee_bean_train",
     validation_split=0.2,
     subset="both",
     seed=727,
@@ -88,7 +88,7 @@ my_model.compile(
     metrics=metrics,
 )
 
-from keras.callbacks import ModelCheckpoint
+from keras.callbacks import ModelCheckpoint, EarlyStopping
 
 model_checkpoint_callbacks = ModelCheckpoint(
     filepath="saved_models/{epoch:02d}-{val_accuracy:.2f}.keras",
@@ -96,6 +96,8 @@ model_checkpoint_callbacks = ModelCheckpoint(
     mode="max",
     save_best_only = True
 )
+
+early_stopping = EarlyStopping(monitor="val_loss", patience=3)
 
 history = my_model.fit(
     ds_train,

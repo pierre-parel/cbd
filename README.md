@@ -19,11 +19,8 @@ wsl --install
 ```sh
 wsl --update
 ```
-3. From a windows terminal, enter WSL:
-```sh
-wsl
-```
-4. Setup your Linux user info by providing a username and password.
+3. Setup your Linux user info by providing a username and password.
+> In the future, you can open WSL by typing `wsl` in the search bar in the Windows start menu.
 
 ## Enabling CUDA for WSL2
 1. Remove the old GPG key:
@@ -42,7 +39,8 @@ cd cbd
 ```
 2. Create virtual environment and install required modules
 ```sh
-python -m venv .venv
+sudo apt install python3 python3-venv
+python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 ```
@@ -60,6 +58,10 @@ cbd/
     examples/
     .py files
 ```
+4. Generate the train/test split by running:
+```sh
+generate_split.py
+```
 4. Generate the augmented dataset using the following command:
 ```sh
 python generate_augmented_images.py
@@ -67,6 +69,10 @@ python generate_augmented_images.py
 5. Train the model using the command:
 ```sh
 python transfer_learning.py
+```
+6. Evaluate the model using the commandL
+```sh
+python evaluate.py
 ```
 TODO
 ------
@@ -94,3 +100,4 @@ References
 - [Deep Learning by 3Blue1Brown](https://www.youtube.com/playlist?list=PLLMP7TazTxHrgVk7w1EKpLBIDoC50QrPS)
 - [Understanding Deep Learning Book](https://udlbook.github.io/udlbook/)
 - [The Principles of Deep Learning Theory](https://deeplearningtheory.com/)
+- [How to Predict New Samples With Your Keras Model](https://github.com/christianversloot/machine-learning-articles/blob/main/how-to-predict-new-samples-with-your-keras-model.md)
