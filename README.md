@@ -49,7 +49,6 @@ pip install -r requirements.txt
 ```
 cbd/
     .venv/
-    checkpoints/
     coffee_bean/
         Broken/
         Cut/
