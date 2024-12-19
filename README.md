@@ -1,4 +1,14 @@
 # Green Coffee Bean Defect Detection 
+
+A deep learning project to classify 17 types of green coffee bean defects using EfficientNetV2S and transfer learning, achieving high accuracy and precision.
+
+## Model Overview
+
+- Developed a deep learning model using **EfficientNetV2S** with **transfer learning** to classify 17 types of green coffee bean defects.
+- Achieved **93.21% validation accuracy** and **93.87% validation precision**.
+- Applied advanced **image augmentation** techniques such as random rotation, translation, and contrast adjustment to enhance generalization and reduce overfitting.
+- Trained the model with a **validation loss of 0.1952**, using **categorical cross-entropy** loss and the **Adam optimizer**, fine-tuned over 100 epochs for reliable defect detection.
+
 ## Setting Up the Environment 
 Tensorflow with GPU access is no longer supported past **TensorFlow 2.10**. Hence, it is recommended to use WSL2. The instructions below are from [NVIDIA's setup docs for CUDA in WSL](https://docs.nvidia.com/cuda/wsl-user-guide/index.html).
 1. Launch your preferred Windows Terminal/Command Prompt/Powershell and install WSL:
