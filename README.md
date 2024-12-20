@@ -5,9 +5,7 @@ A deep learning project to classify 17 types of green coffee bean defects using 
 ## Model Overview
 
 - Developed a deep learning model using **EfficientNetV2S** with **transfer learning** to classify 17 types of green coffee bean defects.
-- Achieved **93.21% validation accuracy** and **93.87% validation precision**.
 - Applied advanced **image augmentation** techniques such as random rotation, translation, and contrast adjustment to enhance generalization and reduce overfitting.
-- Trained the model with a **validation loss of 0.1952**, using **categorical cross-entropy** loss and the **Adam optimizer**, fine-tuned over 100 epochs for reliable defect detection.
 
 ## File Descriptions
 
