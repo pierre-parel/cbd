@@ -12,22 +12,22 @@ A deep learning project to classify 17 types of green coffee bean defects using 
 ## File Descriptions
 
 ### `evaluate.py`
-This script evaluates a pre-trained model's performance on training and test datasets. It uses a saved model to classify 17 classes of green coffee bean defects and outputs the evaluation metrics. The script includes dataset preparation and ensures compatibility with TensorFlow and Keras frameworks.
+Evaluates a pre-trained model on training and test datasets for green coffee bean defect classification.
 
 ### `generate_augmented_images.py`
-Generates additional training data through image augmentation techniques such as rotation at various angles. Processes all images in the training dataset folder and saves the augmented images in the same directory. Useful for improving model generalization and reducing overfitting.
+Creates augmented images (rotations) to improve model generalization and reduce overfitting.
 
 ### `generate_split.py`
-Splits the dataset into training and testing subsets with a specified validation split and ensures stratified sampling based on class labels. Saves the organized datasets into separate directories for easy access during training and evaluation. Handles image resizing and directory setup.
+Splits the dataset into stratified training and testing sets, organizing them into directories (`coffee_bean_test` and `coffee_bean_train`).
 
 ### `transfer_learning.py`
-Implements transfer learning using EfficientNetV2S as the base model, fine-tuned to classify green coffee bean defects. Applies data augmentation during preprocessing and trains the model with categorical cross-entropy loss and Adam optimizer. Includes checkpoints for saving the best-performing model and generates accuracy/loss plots.
+Trains a model using transfer learning with EfficientNetV2S and saves performance plots(`accuracy.jpg` and `loss.jpg`) and checkpoints(inside `saved_models`).
 
 ### `run.sh`
-Automates the complete workflow, including environment setup, dataset preparation, augmentation, model training, and evaluation. Unzips the dataset, organizes it, performs augmentations, trains the model, and evaluates its performance. Ensures a streamlined end-to-end pipeline for running the project.
+Runs the full pipeline: dataset setup(unzipping downloaded .zip file), data augmentation, training, and evaluation.
 
 ### `clean.sh`
-Removes all generated files and directories, including augmented datasets, models, and plots, to reset the project environment. Prepares the setup for a clean rerun of the workflow.
+Cleans up generated files and directories, resetting the project environment.
 
 ## Setting Up the Environment 
 Tensorflow with GPU access is no longer supported past **TensorFlow 2.10**. Hence, it is recommended to use WSL2. The instructions below are from [NVIDIA's setup docs for CUDA in WSL](https://docs.nvidia.com/cuda/wsl-user-guide/index.html).
@@ -65,34 +65,12 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 2. Download [Coffee Green Bean with 17 Defects](https://www.kaggle.com/datasets/sujitraarw/coffee-green-bean-with-17-defects-original)
-3. Unzip to `coffee_bean` folder. Your directory structure shoud look like:
-```
-cbd/
-    .venv/
-    coffee_bean/
-        Broken/
-        Cut/
-        Dry Cherry/
-        ...
-    examples/
-    .py files
-```
-4. Generate the train/test split by running:
+3. Run `run.sh` using the following command:
 ```sh
-generate_split.py
+./run.sh
 ```
-4. Generate the augmented dataset using the following command:
-```sh
-python generate_augmented_images.py
-```
-5. Train the model using the command:
-```sh
-python transfer_learning.py
-```
-6. Evaluate the model using the commandL
-```sh
-python evaluate.py
-```
+See [run.sh file description](###`run.sh`)
+
 TODO
 ------
 - [X] Use GPU for faster training. See [Install TensorFlow with pip](https://www.tensorflow.org/install/pip#windows-wsl2_1) and [Use a GPU](https://www.tensorflow.org/guide/gpu)
