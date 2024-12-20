@@ -65,34 +65,12 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 2. Download [Coffee Green Bean with 17 Defects](https://www.kaggle.com/datasets/sujitraarw/coffee-green-bean-with-17-defects-original)
-3. Unzip to `coffee_bean` folder. Your directory structure shoud look like:
-```
-cbd/
-    .venv/
-    coffee_bean/
-        Broken/
-        Cut/
-        Dry Cherry/
-        ...
-    examples/
-    .py files
-```
-4. Generate the train/test split by running:
+3. Run `run.sh` using the following command:
 ```sh
-generate_split.py
+./run.sh
 ```
-4. Generate the augmented dataset using the following command:
-```sh
-python generate_augmented_images.py
-```
-5. Train the model using the command:
-```sh
-python transfer_learning.py
-```
-6. Evaluate the model using the commandL
-```sh
-python evaluate.py
-```
+See [run.sh file description](###`run.sh`)
+
 TODO
 ------
 - [X] Use GPU for faster training. See [Install TensorFlow with pip](https://www.tensorflow.org/install/pip#windows-wsl2_1) and [Use a GPU](https://www.tensorflow.org/guide/gpu)
