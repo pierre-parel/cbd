@@ -1,10 +1,10 @@
 # Green Coffee Bean Defect Detection 
 
-A deep learning project to classify 17 types of green coffee bean defects using EfficientNetV2S and transfer learning, achieving high accuracy and precision.
+A deep learning project to classify 9 types of green coffee bean defects using EfficientNetV2S and transfer learning, achieving high accuracy and precision.
 
 ## Model Overview
 
-- Developed a deep learning model using **EfficientNetV2S** with **transfer learning** to classify 17 types of green coffee bean defects.
+- Developed a deep learning model using **EfficientNetV2S** with **transfer learning** to classify 9 types of green coffee bean defects.
 - Applied advanced **image augmentation** techniques such as random rotation, translation, and contrast adjustment to enhance generalization and reduce overfitting.
 
 ## File Descriptions
@@ -62,8 +62,8 @@ python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 ```
-2. Download [Coffee Green Bean with 17 Defects](https://www.kaggle.com/datasets/sujitraarw/coffee-green-bean-with-17-defects-original)
-3. Unzip, generate train/test split, and train the model using `run.sh`:
+2. Download [Coffee Green Bean with 17 Defects](https://www.kaggle.com/datasets/sujitraarw/coffee-green-bean-with-17-defects-original) and save it as `archive_modified.zip`.
+3. Unzip the dataset, generate train/test split, and train the model using `run.sh`:
 ```sh
 ./run.sh
 ```
