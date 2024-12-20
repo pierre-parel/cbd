@@ -12,7 +12,7 @@ A deep learning project to classify 17 types of green coffee bean defects using 
 ## File Descriptions
 
 ### `evaluate.py`
-Evaluates a pre-trained model on training and test datasets for green coffee bean defect classification.
+Evaluates a pre-trained model on training and test datasets for green coffee bean defect classification and generates a confusion matrix (`confusion_matrix.jpg`).
 
 ### `generate_augmented_images.py`
 Creates augmented images (rotations) to improve model generalization and reduce overfitting.
@@ -24,7 +24,7 @@ Splits the dataset into stratified training and testing sets, organizing them in
 Trains a model using transfer learning with EfficientNetV2S and saves performance plots(`accuracy.jpg` and `loss.jpg`) and checkpoints(inside `saved_models`).
 
 ### `run.sh`
-Runs the full pipeline: dataset setup(unzipping downloaded .zip file), data augmentation, training, and evaluation.
+Runs the full pipeline: dataset setup(unzipping downloaded .zip file), data augmentation, and training.
 
 ### `clean.sh`
 Cleans up generated files and directories, resetting the project environment.
@@ -65,11 +65,16 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 2. Download [Coffee Green Bean with 17 Defects](https://www.kaggle.com/datasets/sujitraarw/coffee-green-bean-with-17-defects-original)
-3. Run `run.sh` using the following command:
+3. Unzip, generate train/test split, and train the model using `run.sh`:
 ```sh
 ./run.sh
 ```
 See [run.sh file description](###`run.sh`)
+
+4. To evaluate the model, run `evaluate.py`:
+```sh
+python evaluate.py
+```
 
 TODO
 ------

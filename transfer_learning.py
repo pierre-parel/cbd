@@ -28,7 +28,7 @@ my_model = Sequential([
     Dropout(0.2),
     Dense(128, activation="relu"),
     Dropout(0.2),
-    Dense(17, activation="softmax")
+    Dense(9, activation="softmax")
 ])
 
 my_model.summary()
