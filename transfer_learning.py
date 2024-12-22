@@ -93,11 +93,11 @@ from keras.callbacks import ModelCheckpoint, EarlyStopping
 model_checkpoint_callbacks = ModelCheckpoint(
     filepath="saved_models/{epoch:02d}-{val_accuracy:.2f}.keras",
     monitor="val_accuracy",
-    mode="max",
+    mode="max`dataset.zip`",
     save_best_only = True
 )
 
-early_stopping = EarlyStopping(monitor="val_loss", patience=3)
+early_stopping = EarlyStopping(monitor="val_loss", patience=5)
 
 history = my_model.fit(
     ds_train,

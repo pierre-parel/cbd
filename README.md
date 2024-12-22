@@ -70,7 +70,7 @@ python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 ```
-2. Download [`dataset.zip`](https://drive.google.com/file/d/1YOvrgZb4jdpLQ9GqBBuZntccrbR0K6AU/view?usp=sharing).
+2. Download [`dataset.zip`](https://drive.google.com/file/d/1YOvrgZb4jdpLQ9GqBBuZntccrbR0K6AU/view?usp=sharing) and place it in the root folder.
 3. Unzip the dataset, generate train/test split, and train the model using `run.sh`:
 ```sh
 ./run.sh
