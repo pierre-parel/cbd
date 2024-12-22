@@ -1,10 +1,10 @@
 # Green Coffee Bean Defect Detection 
 
-A deep learning project to classify 9 types of green coffee bean defects using EfficientNetV2S and transfer learning, achieving high accuracy and precision.
+A deep learning project to classify 10 types of green coffee bean defects using EfficientNetV2S and transfer learning, achieving high accuracy and precision.
 
 ## Model Overview
 
-- Developed a deep learning model using **EfficientNetV2S** with **transfer learning** to classify 9 types of green coffee bean defects.
+- Developed a deep learning model using **EfficientNetV2S** with **transfer learning** to classify 10 types of green coffee bean defects.
 - Applied advanced **image augmentation** techniques such as random rotation, translation, and contrast adjustment to enhance generalization and reduce overfitting.
 
 ## File Descriptions
@@ -26,6 +26,14 @@ Runs the full pipeline: dataset setup(unzipping downloaded .zip file), data augm
 
 ### `clean.sh`
 Cleans up generated files and directories, resetting the project environment.
+
+## Datasets
+
+The dataset used for this project is a modified version of the aggregation of the following datasets:
+
+### [USK-COFFEE DATASET: A multi-class dataset composed of the various green bean arabica](https://comvis.unsyiah.ac.id/usk-coffee/)
+
+### [Coffee Green Bean with 17 Defects (original)](https://www.kaggle.com/datasets/sujitraarw/coffee-green-bean-with-17-defects-original)
 
 ## Setting Up the Environment 
 Tensorflow with GPU access is no longer supported past **TensorFlow 2.10**. Hence, it is recommended to use WSL2. The instructions below are from [NVIDIA's setup docs for CUDA in WSL](https://docs.nvidia.com/cuda/wsl-user-guide/index.html).
@@ -69,7 +77,7 @@ pip install -r requirements.txt
 ```
 See [run.sh file description](###`run.sh`)
 
-4. To evaluate the model, run `evaluate.py`:
+4. To evaluate the model, modify line 8 of `evaluate.py` to the desired saved model and run:
 ```sh
 python evaluate.py
 ```

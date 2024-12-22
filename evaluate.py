@@ -5,7 +5,7 @@ import tensorflow as tf
 from tensorflow import keras
 
 from keras.saving import load_model
-loaded_model = load_model("./saved_models/94-0.95.keras") # Replace with model to be tested.
+loaded_model = load_model("./saved_models/19-0.86.keras") # Replace with model to be tested.
 
 IMG_SIZE = (224, 224)
 ds_test = keras.utils.image_dataset_from_directory(

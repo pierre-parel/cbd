@@ -28,7 +28,7 @@ my_model = Sequential([
     Dropout(0.2),
     Dense(128, activation="relu"),
     Dropout(0.2),
-    Dense(9, activation="softmax")
+    Dense(10, activation="softmax")
 ])
 
 my_model.summary()
@@ -104,7 +104,8 @@ history = my_model.fit(
     epochs=EPOCHS,
     validation_data=ds_test,
     callbacks = [
-        model_checkpoint_callbacks
+        model_checkpoint_callbacks,
+        early_stopping
     ]
 )
 
