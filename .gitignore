@@ -1,6 +1,7 @@
 env/
-coffee_bean/
+coffee_bean*/
 saved_models/
 *.keras
 *.jpg
+*.png
 *.zip

@@ -28,7 +28,7 @@ my_model = Sequential([
     Dropout(0.2),
     Dense(128, activation="relu"),
     Dropout(0.2),
-    Dense(10, activation="softmax")
+    Dense(8, activation="softmax")
 ])
 
 my_model.summary()
@@ -93,7 +93,7 @@ from keras.callbacks import ModelCheckpoint, EarlyStopping
 model_checkpoint_callbacks = ModelCheckpoint(
     filepath="saved_models/{epoch:02d}-{val_accuracy:.2f}.keras",
     monitor="val_accuracy",
-    mode="max`dataset.zip`",
+    mode="max",
     save_best_only = True
 )
 

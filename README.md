@@ -1,10 +1,10 @@
 # Green Coffee Bean Defect Detection 
 
-A deep learning project to classify 10 types of green coffee bean defects using EfficientNetV2S and transfer learning, achieving high accuracy and precision.
+A deep learning project to classify 8 types of green coffee bean defects using EfficientNetV2S and transfer learning, achieving high accuracy and precision.
 
 ## Model Overview
 
-- Developed a deep learning model using **EfficientNetV2S** with **transfer learning** to classify 10 types of green coffee bean defects.
+- Developed a deep learning model using **EfficientNetV2S** with **transfer learning** to classify 8 types of green coffee bean defects.
 - Applied advanced **image augmentation** techniques such as random rotation, translation, and contrast adjustment to enhance generalization and reduce overfitting.
 
 ## File Descriptions
