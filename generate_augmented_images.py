@@ -12,7 +12,7 @@ for root, _, files in os.walk(base_folder):
                 img = load_img(input_image_path)  
 
                 for angle in angles:
-                    rotated_img = img.rotate(angle, expand=True)
+                    rotated_img = img.rotate(angle, expand=True, fillcolor=(255, 255 ,255))
                     output_filename = f"{os.path.splitext(file)[0]}_rotated_{angle}.jpg"
                     output_path = os.path.join(root, output_filename)
                     rotated_img.save(output_path)

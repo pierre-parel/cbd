@@ -11,9 +11,7 @@ model = EfficientNetV2S(
     input_shape=(224, 224, 3),
 )
 
-# Freeze weights of the EfficientNetV2B0 layers for transfer learning
-# for layer in model.layers[:-5]:
-#     layer.trainable = False
+# Freeze weights of the pre-trained model's layers for transfer learning
 model.trainable = False
 
 from keras.models import Sequential
@@ -30,8 +28,6 @@ my_model = Sequential([
     Dropout(0.2),
     Dense(8, activation="softmax")
 ])
-
-my_model.summary()
 
 # Import dataset
 IMG_SIZE = (224, 224)
@@ -52,10 +48,15 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 img_augmentation_layers = [
-    RandomRotation(factor=0.15),
+    RandomRotation(
+        factor=0.15,
+        fill_mode='constant',
+        fill_value = 255),
     RandomTranslation(height_factor=0.1, width_factor=0.1),
     RandomFlip(),
-    RandomContrast(factor=0.1),
+    RandomContrast(factor=0.2),
+    GaussianNoise(0.2),
+    RandomBrightness(0.2)
 ]
 
 def img_augmentation(images):
@@ -76,6 +77,7 @@ metrics = [
     "accuracy",
     Precision(),
     Recall(),
+    F1Score()
 ]
 
 
@@ -91,13 +93,13 @@ my_model.compile(
 from keras.callbacks import ModelCheckpoint, EarlyStopping
 
 model_checkpoint_callbacks = ModelCheckpoint(
-    filepath="saved_models/{epoch:02d}-{val_accuracy:.2f}.keras",
+    filepath="saved_models/{epoch:02d}-{val_accuracy:.2f}-{val_loss:.2f}.keras",
     monitor="val_accuracy",
     mode="max",
     save_best_only = True
 )
 
-early_stopping = EarlyStopping(monitor="val_loss", patience=5)
+early_stopping = EarlyStopping(monitor="val_loss", patience=10)
 
 history = my_model.fit(
     ds_train,
