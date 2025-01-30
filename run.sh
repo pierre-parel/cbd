@@ -10,4 +10,4 @@ rm -rf saved_models
 unzip dataset.zip -d .
 python generate_split.py
 python generate_augmented_images.py
-python transfer_learning.py
+python transfer_multiclass.py

@@ -4,6 +4,7 @@ os.environ["KERAS_BACKEND"] = "tensorflow"
 import tensorflow as tf
 from tensorflow import keras
 from keras.applications.efficientnet_v2 import EfficientNetV2S
+import numpy as np
 
 model = EfficientNetV2S(
     weights="imagenet",
@@ -20,24 +21,24 @@ from keras.layers import *
 # Create custom model
 my_model = Sequential([
     model,
-    Conv2D(128, 3, 1, activation="relu"),
     GlobalAveragePooling2D(),
+    Dense(256, activation="relu"),
+    Dropout(0.5),
     Dense(128, activation="relu"),
-    Dropout(0.2),
-    Dense(128, activation="relu"),
-    Dropout(0.2),
-    Dense(8, activation="softmax")
+    Dropout(0.5),
+    Dense(8, activation="sigmoid")
 ])
 
 # Import dataset
 IMG_SIZE = (224, 224)
 BATCH_SIZE = 64
 EPOCHS = 100
+
 ds_train, ds_test = keras.utils.image_dataset_from_directory(
     "coffee_bean_train",
     validation_split=0.2,
     subset="both",
-    seed=727,
+    seed=np.randn(100),
     image_size=IMG_SIZE,
     batch_size=BATCH_SIZE,
     label_mode="categorical",
@@ -45,18 +46,15 @@ ds_train, ds_test = keras.utils.image_dataset_from_directory(
 )
 
 import matplotlib.pyplot as plt
-import numpy as np
 
 img_augmentation_layers = [
     RandomRotation(
-        factor=0.15,
+        factor=0.1,
         fill_mode='constant',
         fill_value = 255),
     RandomTranslation(height_factor=0.1, width_factor=0.1),
-    RandomFlip(),
-    RandomContrast(factor=0.2),
-    GaussianNoise(0.2),
-    RandomBrightness(0.2)
+    GaussianNoise(0.05),
+    RandomContrast(0.1)
 ]
 
 def img_augmentation(images):
@@ -86,7 +84,7 @@ from keras.losses import CategoricalCrossentropy
 
 my_model.compile(
     loss=CategoricalCrossentropy(),
-    optimizer=Adam(learning_rate=0.0001),
+    optimizer=Adam(learning_rate=0.001),
     metrics=metrics,
 )
 
@@ -99,7 +97,7 @@ model_checkpoint_callbacks = ModelCheckpoint(
     save_best_only = True
 )
 
-early_stopping = EarlyStopping(monitor="val_loss", patience=10)
+early_stopping = EarlyStopping(monitor="val_loss", patience=5)
 
 history = my_model.fit(
     ds_train,

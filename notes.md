@@ -25,3 +25,20 @@ Is fine-tuning necessary?
 6. Why do we need to do `tf.one_hot` for the labels?
 7. See `examples/mnist.py`. Why do we need an `np.expand_dims()`? Does this allow us to answer issues above?
 8. How to create a model that creates individual probabilities for each defect? (Possibility of 2 or more defects present in one bean)
+
+
+# References
+
+* [Webcam Integration](https://stackoverflow.com/questions/73459401/how-to-predict-test-a-trained-model-in-real-timewebcam)
+* [Webcam Integration Example](https://github.com/mikkelmedm/Processing-Keras-InceptionV3-Webcam/blob/master/InceptionV3_Webcam.py)
+* [Interfacing Python with Arduino](https://projecthub.arduino.cc/ansh2919/serial-communication-between-python-and-arduino-663756)
+
+# Process
+
+Feed first bean -> Python Program (OpenCV webcam + prediction) -> Serial Comm Prediction to Arduino -> Arduino processes logic -> Move motors
+
+# Multi label classification
+
+* Loss Function: Binary Crossentropy 
+* Activation at output: Sigmoid
+https://datascience.stackexchange.com/questions/65006/multi-label-classification-based-on-single-label-dataset
