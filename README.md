@@ -89,6 +89,7 @@ TODO
 - [X] Use different pretrained model for comparison
 - [X] Data augmentation 
 - [X] Prefetch dataset 
+- [ ] Test multilabel classification
 - [ ] Fine-tuning of the model
 - [ ] Experiment with different layers in my_model
 - [ ] Try using other image augmentation techniques
@@ -102,7 +103,6 @@ References
 - [Image classification via fine-tuning with EfficientNet](https://keras.io/examples/vision/image_classification_efficientnet_fine_tuning/)
 - [Transfer learning & fine tuning](https://keras.io/guides/transfer-learning/)
 - [Losses](https://keras.io/api/losses/)
-- [Rohan & Lenny #2: Convolutional Neural Networks](https://ayearofai.com/rohan-lenny-2-convolutional-neural-networks-5f4cd480a60b)
 - [The Deeplearning Book](https://www.deeplearningbook.org/)
 - [Convolution Neural Networks Course by Andrew Ng](https://www.youtube.com/playlist?list=PLkDaE6sCZn6Gl29AoE31iwdVwSG-KnDzF)
 - [Deep Learning by 3Blue1Brown](https://www.youtube.com/playlist?list=PLLMP7TazTxHrgVk7w1EKpLBIDoC50QrPS)
