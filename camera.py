@@ -24,7 +24,6 @@ class_labels = {
 
 max_label_length = max(len(label) for label in class_labels.values())
 
-
 dpg.create_context()
 dpg.create_viewport(title='CBD', width=1280, height=720, resizable=False)
 dpg.setup_dearpygui()
