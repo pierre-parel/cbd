@@ -34,17 +34,22 @@ IMG_SIZE = (224, 224)
 BATCH_SIZE = 64
 EPOCHS = 100
 
-ds_train, ds_test = keras.utils.image_dataset_from_directory(
-    "coffee_bean_train",
-    validation_split=0.2,
-    subset="both",
-    seed=np.randn(100),
+ds_train = keras.utils.image_dataset_from_directory(
+    "coffee_bean/train/",
+    validation_split=None,
+    seed=727,
     image_size=IMG_SIZE,
     batch_size=BATCH_SIZE,
     label_mode="categorical",
-    shuffle=True
 )
 
+ds_test = keras.utils.image_dataset_from_directory(
+    "coffee_bean/valid/",
+    seed=727,
+    image_size=IMG_SIZE,
+    batch_size=BATCH_SIZE,
+    label_mode="categorical",
+)
 import matplotlib.pyplot as plt
 
 img_augmentation_layers = [
