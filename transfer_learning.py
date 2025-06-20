@@ -3,10 +3,14 @@ os.environ["KERAS_BACKEND"] = "tensorflow"
 
 import tensorflow as tf
 from tensorflow import keras
+<<<<<<< Updated upstream
 from keras.applications.efficientnet_v2 import EfficientNetV2S
 import numpy as np
+=======
+from keras.applications.efficientnet_v2 import EfficientNetV2M
+>>>>>>> Stashed changes
 
-model = EfficientNetV2S(
+model = EfficientNetV2M(
     weights="imagenet",
     include_top=False,
     input_shape=(224, 224, 3),
@@ -32,11 +36,19 @@ my_model = Sequential([
 # Import dataset
 IMG_SIZE = (224, 224)
 BATCH_SIZE = 64
+<<<<<<< Updated upstream
 EPOCHS = 100
 
 ds_train = keras.utils.image_dataset_from_directory(
     "coffee_bean/train/",
     validation_split=None,
+=======
+EPOCHS = 500
+ds_train, ds_test = keras.utils.image_dataset_from_directory(
+    "coffee_bean_train",
+    validation_split=0.2,
+    subset="both",
+>>>>>>> Stashed changes
     seed=727,
     image_size=IMG_SIZE,
     batch_size=BATCH_SIZE,
