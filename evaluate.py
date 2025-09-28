@@ -5,20 +5,18 @@ import tensorflow as tf
 from tensorflow import keras
 
 from keras.saving import load_model
-<<<<<<< Updated upstream
-loaded_model = load_model("saved_models/41-0.97-0.09.keras") # Replace with model to be tested.
-=======
-loaded_model = load_model("./saved_models/17-0.87-0.38.keras") # Replace with model to be tested.
->>>>>>> Stashed changes
+loaded_model = load_model("saved_models/18-0.93-0.22.keras") # Replace with model to be tested.
 
 IMG_SIZE = (224, 224)
 ds_test = keras.utils.image_dataset_from_directory(
-    "coffee_bean_test",
+    "dataset-augmented/test",
     seed=1337,
     shuffle=False,
     image_size=IMG_SIZE,
     label_mode="categorical",
 )
+
+print(ds_test.class_names)
 
 evaluate = loaded_model.evaluate(ds_test)
 
@@ -37,10 +35,17 @@ y_pred = np.argmax(y_pred_probs, axis=1)
 
 y_true = np.concatenate([np.argmax(y, axis=1) for _, y in ds_test])
 
-cm = confusion_matrix(y_true, y_pred)
+cm1 = confusion_matrix(y_true, y_pred, normalize='true')
 
 fig, ax = plt.subplots(figsize=(12, 12))  
-disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=ds_test.class_names)
+disp = ConfusionMatrixDisplay(confusion_matrix=cm1, display_labels=ds_test.class_names)
+disp.plot(cmap=plt.cm.Blues, ax=ax, colorbar=False)
+plt.xticks(rotation=45)
+plt.savefig("confusion_matrix_norm.jpg")
+
+cm2 = confusion_matrix(y_true, y_pred)
+fig, ax = plt.subplots(figsize=(12, 12))  
+disp = ConfusionMatrixDisplay(confusion_matrix=cm2, display_labels=ds_test.class_names)
 disp.plot(cmap=plt.cm.Blues, ax=ax, colorbar=False)
 plt.xticks(rotation=45)
 plt.savefig("confusion_matrix.jpg")
